@@ -52,8 +52,15 @@ int	main(int argc, char **argv)
 			t = t->next; 
 		}
 		
-		//controllo numero di argomenti
-		if (argc == 4)
+		//controllo numero di argomenti (dimensione stack)
+		if (argc == 3)
+		{
+			if (stk_a->val > stk_a->next->val)
+			{
+				swap_single(&stk_a);
+			}
+		}
+		else if (argc == 4)
 		{
 			stack_3_sort(&stk_a);
 		}
