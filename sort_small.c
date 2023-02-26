@@ -1,153 +1,100 @@
 #include "push_swap.h"
 
-static void sort3_c1(t_stack **stk)
+void stack_sort_3(t_stack **stk)
 {
-	swap_single(stk);
-}
-static void sort3_c2(t_stack **stk)
-{
-	swap_single(stk);
-	rev_rotate_single(stk);
-}
-static void sort3_c3(t_stack **stk)
-{
-	rotate_single(stk);
-}
-static void sort3_c4(t_stack **stk)
-{
-	swap_single(stk);
-	rotate_single(stk);
-}
-static void sort3_c5(t_stack **stk)
-{
-	rev_rotate_single(stk);
-}
-
-
-int find_min(t_stack **stk)
-{
-	t_stack *t;
-	int		min;
-
-	t = *stk;
-	min = t->val;
-	while(t->next)
-	{
-		if(t->val < min)
-			min = t->val;
-		t = t->next;
-	}
-	printf("valore minimo stack: %d\n", min);
-	return(min);
+    int max; 
+    int min; 
+    t_stack *curr; 
+    curr = *stk; 
+    min = find_min(stk);
+    max = find_max(stk);
+    printf("valore minimo = %d\n", min);
+    printf("valore massimo = %d\n", max);
+    if (curr->next->val == min && curr->next->next->val == max)
+    {
+        //case 1
+        swap_single(stk);
+    }
+    else if(curr->val == max && curr->next->next->val == min)
+    {
+        //case 2
+        swap_single(stk);
+        rev_rotate_single(stk);
+    }
+    else if(curr->val == max && curr->next->val == min)
+    {
+        //case 3
+        rotate_single(stk);
+    }
+    else if(curr->val == min && curr->next->val == max)
+    {
+        //case 4
+        swap_single(stk);
+        rotate_single(stk);
+    }
+    else if(curr->next->val == max && curr->next->next->val == min)
+    {
+        //case 5
+        rev_rotate_single(stk);
+    }
 }
 
-int	list_size(t_stack **stk)
+
+void stack_sort_4_5(t_stack **stk_a, t_stack **stk_b)
 {
-	t_stack *t;
-	int size;
+    t_stack *curr; 
+    int l_size; 
+    int min; 
+    int i; 
 
-	size = 0;
-	t = *stk;
-	while (t)
-	{
-		size++;
-		t = t->next;
-	}
-	return (size);
-}
-
-void stack_3_sort(t_stack **stk)
-{
-	t_stack *t;
-
-	t = *stk;
-	printf("nodo 1: %d, nodo 2: %d, nodo 3: %d\n", t->val, t->next->val, t->next->next->val);
-	if (t->val > t->next->val && t->next->val < t->next->next->val && t->val < t->next->next->val)
-	{
-		printf("caso 1\n");
-		sort3_c1(stk);
-	}
-	else if (t->val > t->next->val && t->next->val > t->next->next->val && t->val > t->next->next->val)
-	{
-		printf("caso 2\n");
-		sort3_c2(stk);
-	}
-	else if (t->val > t->next->val && t->next->val < t->next->next->val && t->val > t->next->next->val)
-	{
-		printf("caso 3\n");
-		sort3_c3(stk);
-	}
-	else if (t->val < t->next->val && t->next->val > t->next->next->val && t->val < t->next->next->val)
-	{
-		printf("caso 4\n");
-		sort3_c4(stk);
-	}
-	else if (t->val < t->next->val && t->next->val > t->next->next->val && t->val > t->next->next->val)
-	{
-		printf("caso 5\n");
-		sort3_c5(stk);
-	}
-}
-
-void stack_5_sort(t_stack **stk_a, t_stack **stk_b)
-{
-	t_stack *t;
-
-	int		i;
-	int		min;
-	int l_size;
-	printf("ordinamento 5 valori\n");
-	
-	
-	l_size = list_size(stk_a);
-
-	while (l_size >= 4)
-	{
-		t = *stk_a;
-		i = 0;
-		min = find_min(stk_a);
-		printf("dimensione lista = %d\n", l_size);
-		//calcolo indice di dove si trova i
-		while(t->next)
+    l_size = list_size(stk_a); 
+    while (l_size >= 4)
+    {
+        printf("dimensione lista = %d\n", l_size);
+        curr = *stk_a;
+        i = 0; 
+        min = find_min(stk_a); 
+        while(curr->next)
 		{
-			if (t->val != min)
+			if (curr->val != min)
 			{
 				i++;
-				t = t->next;
+				curr = curr->next;
 			}	
 			else 
 				break;
 		}
-		printf("indice i = %d\n", i);
-
-		//stabilisco quale rotate risulta migliore utilizzare ovvero usando meno istruzioni (ra o rra)
-		if (i < l_size / 2)
+		//printf("indice i = %d\n", i);
+        if (i <= l_size / 2)
 		{
 			while((*stk_a)->val != min)
-				rev_rotate_single(stk_a);
+			{
+				rotate_single(stk_a);
+				printf("ra\n");
+			}
+				
 		}
 		else
 		{
 			while((*stk_a)->val != min)
-				rotate_single(stk_a);
+			{
+				rev_rotate_single(stk_a);
+				printf("rra\n");
+			}			
 		}
 		push_to_stack(stk_a, stk_b);
+		//printf("pb\n");
 		l_size--;
-	}
-	stack_3_sort(stk_a);
-	push_to_stack(stk_b, stk_a);
-	push_to_stack(stk_b, stk_a);
-	
+    }
 
-	/*find_min(stk_a);
-	push_to_stack(stk_a, stk_b);
-	push_to_stack(stk_a, stk_b);
-	t = *stk_b;
-	if (t->val < t->next->val)
-		swap_single(stk_b);
-	
-	stack_3_sort(stk_a);
-	push_to_stack(stk_b, stk_a);
-	push_to_stack(stk_b, stk_a);*/
-
+    stack_sort_3(stk_a);
+    while (list_size(stk_b) > 1)
+        push_to_stack(stk_b, stk_a);
+    //push_to_stack(stk_b, stk_a);
+	/*while (*stk_b)
+	{
+		push_to_stack(stk_b, stk_a);
+		//printf("pa\n");
+	}*/
 }
+

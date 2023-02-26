@@ -1,106 +1,121 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	t_stack *stk_a;
-	t_stack *stk_a_cur;
-	t_stack *stk_b;
-	t_stack *t; 
+	t_stack *head_a;
+	t_stack *head_b;
+	t_stack *tail_a;
+	t_stack *tail_b;
+	t_stack *new_node;
+	t_stack *curr;
 
-	stk_a = NULL;
-	stk_a_cur = NULL;   
-	stk_b = NULL;   
-	i = 1;
-	if(argc < 2)
-	{
-		printf("no argomenti");
-		return(0);
-	}
+	int	i;
+
+	i = 1; 
+	head_b = 0; 
+	if (argc < 2)
+		printf("Error! Missing Arguments\n");
 	else
 	{
-		//alloco memoria e salvo in stack A 
+		//Popoliamo lo Stack A
 		while (i < argc)
 		{
-			if(stk_a == NULL)
+			if(i == 1) //primo elemento
 			{
-				//printf("alloco per nodo");
-				stk_a = malloc(sizeof(t_stack)); 
-				if (stk_a != NULL)
-				{
-					stk_a_cur = stk_a; 
-					stk_a->val = atoi(argv[i]);
-				}
+				head_a = malloc(sizeof(t_stack));
+				if (head_a == NULL)
+					exit(1);
+				tail_a = head_a;
+				head_a->val = atoi(argv[i]); //TODO: creare funzione ft_atoi
+				head_a->next = NULL;
+				head_a->prev = NULL;	
 			}
-			else 
+			else //ci sono già nodi
 			{
-				stk_a_cur->next = malloc(sizeof(t_stack)); 
-				stk_a_cur = stk_a_cur->next;
-				stk_a_cur->val = atoi(argv[i]); 
+				new_node = malloc(sizeof(t_stack));
+				if (new_node == NULL)
+					exit(1);
+				new_node->val = atoi(argv[i]);
+				new_node->prev = tail_a;
+				new_node->next = NULL; 
+				new_node->prev->next = new_node;
+				tail_a = new_node; 
 			}
 			i++;
 		}
-
-		//stampa contenuto stack a 
-		printf("STACK A INIZIALE\n");
-		
-		t = stk_a;
-
-		while(t)
-		{
-			printf("%d\n", t->val); 
-			t = t->next; 
-		}
-		
-		//controllo numero di argomenti (dimensione stack)
+	
+		curr = head_a; 
+		// check del numero di elementi dello stack e richiamo del relativo algoritmo
 		if (argc == 3)
 		{
-			if (stk_a->val > stk_a->next->val)
+			
+			if (curr->val > curr->next->val)
 			{
-				swap_single(&stk_a);
+				swap_single(&head_a);
 			}
+			
 		}
+
 		else if (argc == 4)
 		{
-			stack_3_sort(&stk_a);
+			stack_sort_3(&head_a);
 		}
-		else if (argc == 6)
+
+		else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
 		{
-			stack_5_sort(&stk_a, &stk_b);
+			head_b = malloc(sizeof(t_stack));
+			if(head_b == NULL)
+				exit(1);
+			stack_sort_4_5(&head_a, &head_b);
+			
 		}
-	}
-	//SMALL SORT WITH 3 ELEMENTS CASES
 
-	//3 elements: case 1 -> sa 
-	//swap_single(stk_a);
+		else if (argc > 6)
+		{
+			stack_sort_big(&head_a, &head_b);
+		}
 
-	//3 elements: case 2 -> sa + rra
-	//swap_single(stk_a);
-	//rev_rotate_single(&stk_a);
+		
 
-	//3 elements: case 3 -> ra
-	//rotate_single(&stk_a);
+		//Visualizza contenuto Stack A
+		printf("-- STACK A --\n");
+		curr = head_a; 
+		if(head_a != NULL)
+		{
+			while(curr)
+			{
+				printf("%d\n", curr->val);
+				curr = curr->next; 
+			}
+		}
+		printf("-- STACK A REVERSE--\n");
+		curr = head_a; 
+		while(curr->next)
+			curr = curr->next;
+		while(curr)
+		{
+			printf("%d\n", curr->val);
+			curr = curr->prev; 
+		}
 
-	//3 elements: case 4 -> sa + ra
-	//swap_single(stk_a);
-	//rotate_single(&stk_a);
+		printf("-- STACK B --\n");
+		curr = head_b; 
+		while(curr)
+		{
+			printf("%d\n", curr->val);
+			curr = curr->next; 
+		}
 
-	//3 elements: case 5 -> rra
-	//rev_rotate_single(&stk_a);
+		printf("-- STACK B REVERSE--\n");
+		curr = head_b; 
+		while(curr->next)
+			curr = curr->next; 
+		while(curr)
+		{
+			printf("%d\n", curr->val);
+			curr = curr->prev; 
+		}
 
-	printf("STACK A\n");
-	t = stk_a;
-	while(t)
-	{
-		printf("%d\n", t->val); 
-		t = t->next; 
-	}
-
-	printf("STACK B\n");
-	t = stk_b;
-	while(t)
-	{
-		printf("%d\n", t->val); 
-		t = t->next;
 	}
 }
