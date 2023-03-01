@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 			if (curr->val > curr->next->val)
 			{
 				swap_single(&head_a);
+				printf("sa\n");
 			}
 			
 		}
@@ -76,10 +77,8 @@ int	main(int argc, char **argv)
 			stack_sort_big(&head_a, &head_b);
 		}
 
-		
-
 		//Visualizza contenuto Stack A
-		printf("-- STACK A --\n");
+		/*printf("-- STACK A --\n");
 		curr = head_a; 
 		if(head_a != NULL)
 		{
@@ -107,7 +106,7 @@ int	main(int argc, char **argv)
 			curr = curr->next; 
 		}
 
-		/*printf("-- STACK B REVERSE--\n");
+		printf("-- STACK B REVERSE--\n");
 		curr = head_b; 
 		while(curr->next)
 			curr = curr->next; 

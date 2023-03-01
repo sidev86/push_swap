@@ -23,15 +23,19 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
 
     populate_array(nums, stk_a); 
     sort_array(nums, l_size); 
-    printf("CONTENUTO ARRAY CHUNKS:\n");
-    while(i < l_size)
-        printf("%d\n", nums[i++]);
+    //printf("CONTENUTO ARRAY CHUNKS:\n");
+    //while(i < l_size)
+        //printf("%d\n", nums[i++]);
     
     //stabilisco numero di chunk in base a dimensione stack
     if (l_size <= 10)
         chunks = 2;
-    else 
+    else if (l_size > 10 && l_size <= 50)
         chunks = 4; 
+    else if (l_size > 50 && l_size <= 100)
+        chunks = 5;
+    else if (l_size > 100)
+        chunks = 11;
     //distanza tra i valori (range del chunk)
     dist = (l_size / chunks) - 1;
     
@@ -40,7 +44,7 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
     while (ch_num <= chunks)
     {
         range = get_chunk_range(nums, dist, ch_num, chunks);
-        printf("min range = %d, max range = %d\n", range[0], range[1]);
+        //printf("min range = %d, max range = %d\n", range[0], range[1]);
 
         curr = *stk_a; 
         while(curr != NULL)
@@ -59,7 +63,7 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
                     break; 
                
             }
-            printf("indice i del valore trovato : %d\n", i);
+            //printf("indice i del valore trovato : %d\n", i);
             if (curr && l_size > 0)
             {
                 if (i < l_size / 2)
@@ -90,27 +94,46 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
 
     while(list_size(stk_b) > 0)
     {
-        
+        i = 0;
         max = find_max(stk_b);
-        printf("max valore in stack b : %d\n", max);
+        //printf("max valore in stack b : %d\n", max);
         curr = *stk_b;
         while(curr)
         {
-            if (curr->val == max)
+            if (curr->val != max)
             {
-                while((*stk_b)->val != max)
-                {
-                    rotate_single(stk_b);
-                    printf("rb\n");
-                }   
-                push_to_stack(stk_b, stk_a);
-                break;   
+                i++;
+                curr = curr->next;
             }
-            curr = curr->next; 
+            else
+                break;
         }
+        l_size = list_size(stk_b);
+        if (curr && l_size > 0)
+            {
+                if (i < l_size / 2)
+                {
+                    while((*stk_b)->val != max)
+                    {
+                        rotate_single(stk_b);
+                        printf("rb\n");
+                    }
+                }
+                else 
+                {
+                    while((*stk_b)->val != max)
+                    {
+                        rev_rotate_single(stk_b);
+                        printf("rrb\n");
+                    }
+                }
+                push_to_stack(stk_b, stk_a);
+		        printf("pa\n");
+		        l_size--;    
+            }
+            else
+                break; 
     }
-    printf("valore in cima a stack a = %d\n", (*stk_a)->val);
+    //printf("valore in cima a stack a = %d\n", (*stk_a)->val);
     //printf("valore successivo a stack b = %d\n", (*stk_b)->next->val);
-
- 
 }

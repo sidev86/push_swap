@@ -12,7 +12,7 @@ int	list_size(t_stack **stk)
 		size++;
 		t = t->next;
 	}
-	printf("dimensione listozza = %d\n", size);
+	//printf("dimensione listozza = %d\n", size);
 	return (size);
 }
 
@@ -29,7 +29,7 @@ int find_min(t_stack **stk)
 			min = t->val;
 		t = t->next;
 	}
-	printf("valore minimo stack: %d\n", min);
+	//printf("valore minimo stack: %d\n", min);
 	return(min);
 }
 
