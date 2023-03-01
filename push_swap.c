@@ -64,9 +64,9 @@ int	main(int argc, char **argv)
 
 		else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
 		{
-			head_b = malloc(sizeof(t_stack));
+			/*head_b = malloc(sizeof(t_stack));
 			if(head_b == NULL)
-				exit(1);
+				exit(1);*/
 			stack_sort_4_5(&head_a, &head_b);
 			
 		}
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 			curr = curr->next; 
 		}
 
-		printf("-- STACK B REVERSE--\n");
+		/*printf("-- STACK B REVERSE--\n");
 		curr = head_b; 
 		while(curr->next)
 			curr = curr->next; 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 		{
 			printf("%d\n", curr->val);
 			curr = curr->prev; 
-		}
+		}*/
 
 	}
 }

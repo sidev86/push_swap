@@ -3,14 +3,15 @@
 void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
 {
     t_stack *curr; 
+    int *range;
+    int *nums;
     int l_size;
     int ch_num; 
     int chunks; 
     int dist; 
-    int *range;
     int index; 
-    int *nums;
-    int i; 
+    int i;
+    int max; 
 
     ch_num = 0; 
     i = 0; 
@@ -42,9 +43,6 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
         printf("min range = %d, max range = %d\n", range[0], range[1]);
 
         curr = *stk_a; 
-        
-       
-
         while(curr != NULL)
         {
 
@@ -87,11 +85,32 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
             else
                 break; 
         }
-
-
         ch_num += 1; 
     }
-     
-       
+
+    while(list_size(stk_b) > 0)
+    {
+        
+        max = find_max(stk_b);
+        printf("max valore in stack b : %d\n", max);
+        curr = *stk_b;
+        while(curr)
+        {
+            if (curr->val == max)
+            {
+                while((*stk_b)->val != max)
+                {
+                    rotate_single(stk_b);
+                    printf("rb\n");
+                }   
+                push_to_stack(stk_b, stk_a);
+                break;   
+            }
+            curr = curr->next; 
+        }
+    }
+    printf("valore in cima a stack a = %d\n", (*stk_a)->val);
+    //printf("valore successivo a stack b = %d\n", (*stk_b)->next->val);
+
  
 }

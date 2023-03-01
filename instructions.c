@@ -62,11 +62,16 @@ void push_to_stack(t_stack **stk_o, t_stack **stk_d)
 	//pa or pb -> push from stack origin (stk_o) to stack destination (stk_d)
 	t_stack *tmp; 
 	tmp = *stk_o;
+	
 	if (tmp->next)
 	{
 		*stk_o = (*stk_o)->next; 
 		(*stk_o)->prev = NULL; 
 	}
+	else
+		(*stk_o) = NULL; 
+	
+	
 		tmp->next = *stk_d; 
 		*stk_d = tmp; 
 		if(tmp->next)

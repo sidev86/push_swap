@@ -71,8 +71,7 @@ void stack_sort_4_5(t_stack **stk_a, t_stack **stk_b)
 			{
 				rotate_single(stk_a);
 				printf("ra\n");
-			}
-				
+			}		
 		}
 		else
 		{
@@ -88,8 +87,10 @@ void stack_sort_4_5(t_stack **stk_a, t_stack **stk_b)
     }
 
     stack_sort_3(stk_a);
-    while (list_size(stk_b) > 1)
+    while (list_size(stk_b) > 0)
         push_to_stack(stk_b, stk_a);
+    
+    
     //push_to_stack(stk_b, stk_a);
 	/*while (*stk_b)
 	{
