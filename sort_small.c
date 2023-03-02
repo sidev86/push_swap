@@ -99,9 +99,6 @@ void stack_sort_4_5(t_stack **stk_a, t_stack **stk_b)
         push_to_stack(stk_b, stk_a);
         printf("pa\n");
     }
-        
-    
-    
     //push_to_stack(stk_b, stk_a);
 	/*while (*stk_b)
 	{

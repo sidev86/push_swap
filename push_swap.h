@@ -25,5 +25,8 @@ void populate_array(int nums[], t_stack **stk_a);
 void sort_array(int nums[], int size);
 int *get_chunk_range(int nums[], int dist, int ch_num, int chunks);
 int array_size(int *nums);
+int get_chunks_num(int l_size);
+int find_val_pos(t_stack **stk_a, int *range);
+t_stack *get_curr_pos(t_stack **stk_a, int *range);
 
 #endif

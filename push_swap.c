@@ -12,7 +12,7 @@ int	main(int argc, char **argv)
 
 	int	i;
 
-	i = 1; 
+	i = 1;
 	head_b = 0; 
 	if (argc < 2)
 		printf("Error! Missing Arguments\n");
@@ -44,39 +44,33 @@ int	main(int argc, char **argv)
 			}
 			i++;
 		}
-	
+		
 		curr = head_a; 
 		// check del numero di elementi dello stack e richiamo del relativo algoritmo
 		if (argc == 3)
 		{
-			
 			if (curr->val > curr->next->val)
 			{
 				swap_single(&head_a);
 				printf("sa\n");
-			}
-			
+			}	
 		}
-
 		else if (argc == 4)
 		{
 			stack_sort_3(&head_a);
 		}
-
 		else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
 		{
 			/*head_b = malloc(sizeof(t_stack));
 			if(head_b == NULL)
 				exit(1);*/
-			stack_sort_4_5(&head_a, &head_b);
-			
+			stack_sort_4_5(&head_a, &head_b);	
 		}
-
 		else if (argc > 6)
 		{
 			stack_sort_big(&head_a, &head_b);
 		}
-
+	
 		//Visualizza contenuto Stack A
 		/*printf("-- STACK A --\n");
 		curr = head_a; 
@@ -115,6 +109,5 @@ int	main(int argc, char **argv)
 			printf("%d\n", curr->val);
 			curr = curr->prev; 
 		}*/
-
 	}
 }

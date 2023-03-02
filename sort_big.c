@@ -8,7 +8,6 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
     int l_size;
     int ch_num; 
     int chunks; 
-    int dist; 
     int index; 
     int i;
     int max; 
@@ -23,36 +22,29 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
 
     populate_array(nums, stk_a); 
     sort_array(nums, l_size); 
+    chunks = get_chunks_num(list_size(stk_a));
     //printf("CONTENUTO ARRAY CHUNKS:\n");
     //while(i < l_size)
         //printf("%d\n", nums[i++]);
     
-    //stabilisco numero di chunk in base a dimensione stack
-    if (l_size <= 10)
-        chunks = 2;
-    else if (l_size > 10 && l_size <= 50)
-        chunks = 4; 
-    else if (l_size > 50 && l_size <= 100)
-        chunks = 5;
-    else if (l_size > 100)
-        chunks = 11;
+    
     //distanza tra i valori (range del chunk)
-    dist = (l_size / chunks) - 1;
     
     ch_num = 1;
 
     while (ch_num <= chunks)
     {
-        range = get_chunk_range(nums, dist, ch_num, chunks);
+        range = get_chunk_range(nums, (l_size / chunks) - 1, ch_num, chunks);
         //printf("min range = %d, max range = %d\n", range[0], range[1]);
 
         curr = *stk_a; 
         while(curr != NULL)
         {
-
             i = 0; 
-            curr = *stk_a;
-            while (curr)
+            //curr = *stk_a;
+            i = find_val_pos(stk_a, range);
+            curr = get_curr_pos(stk_a, range);
+            /*while (curr)
             {
                 if(curr->val < range[0] || curr->val > range[1])
                 {
@@ -61,9 +53,9 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
                 }
                 else 
                     break; 
-               
-            }
-            //printf("indice i del valore trovato : %d\n", i);
+            }*/
+           
+            printf("indice i del valore trovato : %d\n", i);
             if (curr && l_size > 0)
             {
                 if (i < l_size / 2)
