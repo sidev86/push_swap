@@ -28,5 +28,6 @@ int array_size(int *nums);
 int get_chunks_num(int l_size);
 int find_val_pos(t_stack **stk_a, int *range);
 t_stack *get_curr_pos(t_stack **stk_a, int *range);
-
+void check_best_rotation(int i, int l_size, int *range, t_stack **stk_a);
+void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums);
 #endif
