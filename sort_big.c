@@ -6,7 +6,6 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
     int *nums; 
     int l_size;
     int i;
-    int max; 
  
     i = 0; 
     //calcolo dimensione stack a (numero elementi)
@@ -18,6 +17,7 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
     populate_array(nums, stk_a); 
     sort_array(nums, l_size); 
     sort_stack_a(stk_a, stk_b, nums);
+    sort_stack_b(stk_a, stk_b);
     
     //printf("CONTENUTO ARRAY CHUNKS:\n");
     //while(i < l_size)
@@ -51,8 +51,8 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
         ch_num += 1; 
     }*/
 
-    //sort_stack_b(stk_b);
-    while(list_size(stk_b) > 0)
+  
+    /*while(list_size(stk_b) > 0)
     {
         i = 0;
         max = find_max(stk_b);
@@ -70,30 +70,30 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
         }
         l_size = list_size(stk_b);
         if (curr && l_size > 0)
+        {
+            if (i < l_size / 2)
             {
-                if (i < l_size / 2)
+                while((*stk_b)->val != max)
                 {
-                    while((*stk_b)->val != max)
-                    {
-                        rotate_single(stk_b);
-                        printf("rb\n");
-                    }
+                    rotate_single(stk_b);
+                    printf("rb\n");
                 }
-                else 
-                {
-                    while((*stk_b)->val != max)
-                    {
-                        rev_rotate_single(stk_b);
-                        printf("rrb\n");
-                    }
-                }
-                push_to_stack(stk_b, stk_a);
-		        printf("pa\n");
-		        l_size--;    
             }
-            else
-                break; 
-    }
-    //printf("valore in cima a stack a = %d\n", (*stk_a)->val);
-    //printf("valore successivo a stack b = %d\n", (*stk_b)->next->val);
+            else 
+            {
+                while((*stk_b)->val != max)
+                {
+                    rev_rotate_single(stk_b);
+                    printf("rrb\n");
+                }
+            }
+            push_to_stack(stk_b, stk_a);
+            printf("pa\n");
+            l_size--;    
+        }
+        else
+            break; */
+        //printf("valore in cima a stack a = %d\n", (*stk_a)->val);
+        //printf("valore successivo a stack b = %d\n", (*stk_b)->next->val);
 }
+    

@@ -18,7 +18,7 @@ int get_chunks_num(int l_size)
     return chunks;
 }
 
-int find_val_pos(t_stack **stk_a, int *range)
+int find_val_pos_a(t_stack **stk_a, int *range)
 {
     t_stack *curr;
     int i;
