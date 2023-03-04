@@ -17,7 +17,7 @@ void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk
     while (ch_num <= chunks)
     {
         range = get_chunk_range(nums, (l / chunks) - 1, ch_num, chunks);
-        //printf("min range = %d, max range = %d\n", range[0], range[1]);
+        printf("min range = %d, max range = %d\n", range[0], range[1]);
         curr = *stk_a; 
         while(curr != NULL && l_size > 0)
         {
