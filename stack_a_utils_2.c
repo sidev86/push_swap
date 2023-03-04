@@ -69,3 +69,27 @@ void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums)
    
 }
 
+int check_doubles(t_stack **stk_a)
+{
+    t_stack *curr;
+    t_stack *curr2;
+
+    curr = *stk_a;
+    curr2 = *stk_a;
+
+    while (curr)
+    {
+        //curr = *stk_a;
+        curr2 = *stk_a;
+        while (curr2)
+        {
+            if(curr != curr2 && curr->val == curr2->val)
+                return 1;
+            else
+                curr2 = curr2->next;
+        }
+        curr = curr->next;
+    }
+    return 0;
+}
+

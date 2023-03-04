@@ -14,6 +14,7 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	head_b = 0; 
+
 	if (argc < 2)
 		printf("Error! Missing Arguments\n");
 	else
@@ -44,8 +45,15 @@ int	main(int argc, char **argv)
 			}
 			i++;
 		}
+
+
 		
 		curr = head_a; 
+
+		if (check_doubles(&head_a))
+			printf("stack non valido. sono presenti valori doppi\n");
+		else
+			printf("stack valido. NON sono presenti valori doppi\n");
 		// check del numero di elementi dello stack e richiamo del relativo algoritmo
 		if (argc == 3)
 		{
