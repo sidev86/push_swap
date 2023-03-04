@@ -53,31 +53,35 @@ int	main(int argc, char **argv)
 		if (check_doubles(&head_a))
 			printf("stack non valido. sono presenti valori doppi\n");
 		else
+		{
 			printf("stack valido. NON sono presenti valori doppi\n");
-		// check del numero di elementi dello stack e richiamo del relativo algoritmo
-		if (argc == 3)
-		{
-			if (curr->val > curr->next->val)
+			if (argc == 3)
 			{
-				swap_single(&head_a);
-				printf("sa\n");
-			}	
+				if (curr->val > curr->next->val)
+				{
+					swap_single(&head_a);
+					printf("sa\n");
+				}	
+			}
+			else if (argc == 4)
+			{
+				stack_sort_3(&head_a);
+			}
+			else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
+			{
+				/*head_b = malloc(sizeof(t_stack));
+				if(head_b == NULL)
+					exit(1);*/
+				stack_sort_4_5(&head_a, &head_b);	
+			}
+			else if (argc > 6)
+			{
+				stack_sort_big(&head_a, &head_b);
+			}
 		}
-		else if (argc == 4)
-		{
-			stack_sort_3(&head_a);
-		}
-		else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
-		{
-			/*head_b = malloc(sizeof(t_stack));
-			if(head_b == NULL)
-				exit(1);*/
-			stack_sort_4_5(&head_a, &head_b);	
-		}
-		else if (argc > 6)
-		{
-			stack_sort_big(&head_a, &head_b);
-		}
+		
+		// check del numero di elementi dello stack e richiamo del relativo algoritmo
+		
 	
 		//Visualizza contenuto Stack A
 		/*printf("-- STACK A --\n");
