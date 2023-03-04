@@ -14,7 +14,7 @@ void sort_stack_b(t_stack **stk_a, t_stack **stk_b)
         max = find_max(stk_b);
         //printf("max valore in stack b : %d\n", max);
         curr = *stk_b;
-        i = find_val_pos_b(curr, max);
+        i = find_val_pos_b(&curr, max);
         if (curr && l_size > 0)
         {
             check_best_rotation_b(i, l_size, max, stk_b);

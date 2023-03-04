@@ -1,8 +1,5 @@
 #include "push_swap.h"
 
-
-
-
 int get_chunks_num(int l_size)
 {
     int chunks;
@@ -18,7 +15,7 @@ int get_chunks_num(int l_size)
     return chunks;
 }
 
-int find_val_pos_a(t_stack **stk_a, int *range)
+int find_val_stka_top(t_stack **stk_a, int *range)
 {
     t_stack *curr;
     int i;
@@ -38,7 +35,29 @@ int find_val_pos_a(t_stack **stk_a, int *range)
     return i;
 }
 
-t_stack *get_curr_pos(t_stack **stk_a, int *range)
+int find_val_stka_bottom(t_stack **stk_a, int *range)
+{
+    t_stack *curr;
+    int j; 
+
+    j = 0; 
+    curr = *stk_a; 
+    while (curr->next)
+        curr = curr->next; 
+    while(curr)
+    {
+        if(curr->val < range[0] || curr->val > range[1])
+        {
+            j++;
+            curr = curr->prev;
+        }
+        else 
+            break; 
+    }
+    return j; 
+}
+
+t_stack *get_curr_stka_top(t_stack **stk_a, int *range)
 {
     t_stack *curr;
 
@@ -54,3 +73,23 @@ t_stack *get_curr_pos(t_stack **stk_a, int *range)
     }
     return curr;
 }
+
+t_stack *get_curr_stka_bottom(t_stack **stk_a, int *range)
+{
+    t_stack *curr;
+
+    curr = *stk_a;
+    while(curr->next)
+        curr = curr->next; 
+    while (curr)
+    {
+        if(curr->val < range[0] || curr->val > range[1])
+        {
+            curr = curr->prev;
+        }
+        else 
+            break;    
+    }
+    return curr;
+}
+

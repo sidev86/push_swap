@@ -11,7 +11,8 @@ typedef struct	s_stack
 }		t_stack;
 
 
-t_stack *get_curr_pos(t_stack **stk_a, int *range);
+t_stack *get_curr_stka_top(t_stack **stk_a, int *range);
+t_stack *get_curr_stka_bottom(t_stack **stk_a, int *range);
 void swap_single(t_stack **stk);
 void stack_sort_3(t_stack **stk);
 void rotate_single(t_stack **stk);
@@ -28,8 +29,10 @@ void sort_array(int nums[], int size);
 int *get_chunk_range(int nums[], int dist, int ch_num, int chunks);
 int array_size(int *nums);
 int get_chunks_num(int l_size);
-int find_val_pos_a(t_stack **stk_a, int *range);
+int find_val_stka_top(t_stack **stk_a, int *range);
+int find_val_stka_bottom(t_stack **stk_a, int *range);
 int find_val_pos_b(t_stack **stk_b, int max);
+int get_curr_val_index(t_stack **stk_a, int val);
 
 void check_best_rotation_a(int i, int l_size, int *range, t_stack **stk_a);
 void check_best_rotation_b(int i, int l_size, int max, t_stack **stk_b);
