@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 			printf("stack non valido. sono presenti valori doppi\n");
 		else
 		{
-			printf("stack valido. NON sono presenti valori doppi\n");
+			//printf("stack valido. NON sono presenti valori doppi\n");
 			if (argc == 3)
 			{
 				if (curr->val > curr->next->val)

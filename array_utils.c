@@ -40,22 +40,14 @@ void sort_array(int nums[], int size)
     }
 }
 
-int array_size(int *nums)
-{
-    int a_size;
-
-    a_size = sizeof(nums)-1;
-    return(a_size); 
-}
-
-int *get_chunk_range(int nums[], int dist, int ch_num, int chunks)
+int *get_chunk_range(int nums[], int dim, int ch_num, int chunks)
 {
     static int index;
-    static int range[2];
-    int dim; 
+    static int range[2]; 
+    int dist; 
 
-    dim = array_size(nums); 
-    printf("dimensione array = %d\n", dim); 
+    dist = dim / chunks - 1;
+    //printf("dimensione array = %d\n", dim); 
     range[0] = nums[index];
     if (ch_num != chunks)
         range[1] = nums[index + dist];

@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h> 
+#include <stddef.h>
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -27,7 +28,6 @@ int	list_size(t_stack **stk);
 void populate_array(int nums[], t_stack **stk_a);
 void sort_array(int nums[], int size);
 int *get_chunk_range(int nums[], int dist, int ch_num, int chunks);
-int array_size(int *nums);
 int get_chunks_num(int l_size);
 int find_val_stka_top(t_stack **stk_a, int *range);
 int find_val_stka_bottom(t_stack **stk_a, int *range);

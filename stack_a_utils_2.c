@@ -14,10 +14,11 @@ void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk
     ch_num = 1; 
     l_size = list_size(stk_a);
     l = l_size; 
+    //printf("l = %d\n", l);
     while (ch_num <= chunks)
     {
-        range = get_chunk_range(nums, (l / chunks) - 1, ch_num, chunks);
-        printf("min range = %d, max range = %d\n", range[0], range[1]);
+        range = get_chunk_range(nums, l, ch_num, chunks);
+        //printf("min range = %d, max range = %d\n", range[0], range[1]);
         curr = *stk_a; 
         while(curr != NULL && l_size > 0)
         {
