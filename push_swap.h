@@ -14,6 +14,7 @@ typedef struct	s_stack
 
 t_stack *get_curr_stka_top(t_stack **stk_a, int *range);
 t_stack *get_curr_stka_bottom(t_stack **stk_a, int *range);
+t_stack *get_curr_max_pos(t_stack **stk_a, int max);
 void swap_single(t_stack **stk);
 void stack_sort_3(t_stack **stk);
 void rotate_single(t_stack **stk);
@@ -35,8 +36,8 @@ int find_val_pos_b(t_stack **stk_b, int max);
 int get_curr_val_index(t_stack **stk_a, int val);
 int check_doubles(t_stack **stk_a);
 
-void check_best_rotation_a(int i, int l_size, int *range, t_stack **stk_a);
-void check_best_rotation_b(int i, int l_size, int max, t_stack **stk_b);
+void check_best_rotation_a(t_stack **stk_a, int i, int l_size, int *range);
+void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max);
 void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums);
 void sort_stack_b(t_stack **stk_a, t_stack **stk_b);
 

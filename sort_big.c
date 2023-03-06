@@ -19,6 +19,7 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
     sort_stack_a(stk_a, stk_b, nums);
     sort_stack_b(stk_a, stk_b);
     
+    
     //printf("CONTENUTO ARRAY CHUNKS:\n");
     //while(i < l_size)
         //printf("%d\n", nums[i++]);
@@ -42,7 +43,7 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
             {
                 check_best_rotation(i, l_size, range, stk_a);
                 push_to_stack(stk_a, stk_b);
-		        printf("pb\n");
+		        printf("pb\n")void check_best_rotation_a(t_stack **stk_a, int i, int l_size, int *range);;
 		        l_size--;    
             }
             else
@@ -67,7 +68,7 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
             }
             else
                 break;
-        }
+        }int i, int l_size, int *range, 
         l_size = list_size(stk_b);
         if (curr && l_size > 0)
         {

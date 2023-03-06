@@ -46,7 +46,7 @@ void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk
             //printf("valore in posizione corrente: %d\n", curr->val);
             if (curr && l_size > 0)
             {
-                check_best_rotation_a(i, l_size, range, stk_a);
+                check_best_rotation_a(stk_a, i, l_size, range);
                 push_to_stack(stk_a, stk_b);
 		        printf("pb\n");
                 l_size--;   

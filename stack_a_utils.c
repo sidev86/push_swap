@@ -71,7 +71,7 @@ int find_next_min(t_stack **stk_a, int curr_min)
 	return(min); 
 }
 
-void check_best_rotation_a(int i, int l_size, int *range, t_stack **stk_a)
+void check_best_rotation_a(t_stack **stk_a, int i, int l_size, int *range)
 {
 	if (i < l_size / 2)
 	{
