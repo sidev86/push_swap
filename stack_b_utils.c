@@ -9,12 +9,12 @@ void sort_stack_b(t_stack **stk_a, t_stack **stk_b)
 
     while(list_size(stk_b) > 0)
     {
-        i = 0;
         max = find_max(stk_b);
-        printf("max valore in stack b : %d\n", max);
+        //printf("max valore in stack b : %d\n", max);
         curr = *stk_b;
         
         curr = get_curr_max_pos(stk_b, max);
+        i = get_curr_val_index(stk_b, curr->val);
         l_size = list_size(stk_b);
         if (curr && l_size > 0)
         {
@@ -28,12 +28,13 @@ void sort_stack_b(t_stack **stk_a, t_stack **stk_b)
     }
 }
 
-t_stack *get_curr_max_pos(t_stack **stk_a, int max)
+t_stack *get_curr_max_pos(t_stack **stk_b, int max)
 {
     t_stack *curr;
     int i;
 
     i = 0;
+    curr = *stk_b;
     while(curr)
     {
         if (curr->val != max)
@@ -49,7 +50,7 @@ t_stack *get_curr_max_pos(t_stack **stk_a, int max)
 
 void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max)
 {
-    printf("best rotation b\n");
+    //printf("best rotation b\n");
     if (i < l_size / 2)
     {
         while((*stk_b)->val != max)

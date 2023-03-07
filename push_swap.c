@@ -15,9 +15,8 @@ int	main(int argc, char **argv)
 	i = 1;
 	head_b = 0; 
 
-	if (argc < 2)
-		printf("Error! Missing Arguments\n");
-	else
+	
+	if (argc >= 2)
 	{
 		//Popoliamo lo Stack A
 		while (i < argc)
@@ -28,30 +27,45 @@ int	main(int argc, char **argv)
 				if (head_a == NULL)
 					exit(1);
 				tail_a = head_a;
-				head_a->val = atoi(argv[i]); //TODO: creare funzione ft_atoi
-				head_a->next = NULL;
-				head_a->prev = NULL;	
+				if(is_integer(argv[i]))
+				{
+					head_a->val = atoi(argv[i]); //TODO: creare funzione ft_atoi
+					head_a->next = NULL;
+					head_a->prev = NULL;	
+				}
+				else 
+				{
+					printf("Error argument not valid\n");
+					exit(1);
+				}
 			}
+					
 			else //ci sono già nodi
 			{
 				new_node = malloc(sizeof(t_stack));
 				if (new_node == NULL)
 					exit(1);
-				new_node->val = atoi(argv[i]);
-				new_node->prev = tail_a;
-				new_node->next = NULL; 
-				new_node->prev->next = new_node;
-				tail_a = new_node; 
+				if (is_integer(argv[i]))
+				{
+					new_node->val = atoi(argv[i]);
+					new_node->prev = tail_a;
+					new_node->next = NULL; 
+					new_node->prev->next = new_node;
+					tail_a = new_node; 
+				}
+				else
+				{
+					printf("Error argument not valid\n");
+					exit(1);
+				}		
 			}
 			i++;
 		}
 
-
-		
 		curr = head_a; 
 
 		if (check_doubles(&head_a))
-			printf("stack non valido. sono presenti valori doppi\n");
+			printf("Error. contains doubles\n");
 		else
 		{
 			//printf("stack valido. NON sono presenti valori doppi\n");

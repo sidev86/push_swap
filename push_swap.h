@@ -35,6 +35,7 @@ int find_val_stka_bottom(t_stack **stk_a, int *range);
 int find_val_pos_b(t_stack **stk_b, int max);
 int get_curr_val_index(t_stack **stk_a, int val);
 int check_doubles(t_stack **stk_a);
+int is_integer(char *str);
 
 void check_best_rotation_a(t_stack **stk_a, int i, int l_size, int *range);
 void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max);
