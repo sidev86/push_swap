@@ -26,6 +26,7 @@ int find_min(t_stack **stk);
 int find_next_min(t_stack **stk_a, int curr_min);
 int find_max(t_stack **stk);
 int	list_size(t_stack **stk);
+int is_sorted(t_stack **stk_a);
 void populate_array(int nums[], t_stack **stk_a);
 void sort_array(int nums[], int size);
 int *get_chunk_range(int nums[], int dist, int ch_num, int chunks);
@@ -41,5 +42,6 @@ void check_best_rotation_a(t_stack **stk_a, int i, int l_size, int *range);
 void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max);
 void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums);
 void sort_stack_b(t_stack **stk_a, t_stack **stk_b);
+void free_stack_memory(t_stack **stk_a);
 
 #endif

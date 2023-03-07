@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 				}
 				else 
 				{
-					printf("Error argument not valid\n");
+					printf("Error\n");
 					exit(1);
 				}
 			}
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 				}
 				else
 				{
-					printf("Error argument not valid\n");
+					printf("Error\n");
 					exit(1);
 				}		
 			}
@@ -65,34 +65,40 @@ int	main(int argc, char **argv)
 		curr = head_a; 
 
 		if (check_doubles(&head_a))
-			printf("Error. contains doubles\n");
+			printf("Error\n");
 		else
 		{
-			//printf("stack valido. NON sono presenti valori doppi\n");
-			if (argc == 3)
+			if(!is_sorted(&curr))
 			{
-				if (curr->val > curr->next->val)
+				//printf("stack valido. NON sono presenti valori doppi\n");
+				if (argc == 3)
 				{
-					swap_single(&head_a);
-					printf("sa\n");
-				}	
+					if (curr->val > curr->next->val)
+					{
+						swap_single(&head_a);
+						printf("sa\n");
+					}	
+				}
+				else if (argc == 4)
+				{
+					stack_sort_3(&head_a);
+				}
+				else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
+				{
+					/*head_b = malloc(sizeof(t_stack));
+					if(head_b == NULL)
+						exit(1);*/
+					stack_sort_4_5(&head_a, &head_b);	
+				}
+				else if (argc > 6)
+				{
+					stack_sort_big(&head_a, &head_b);
+				}
 			}
-			else if (argc == 4)
-			{
-				stack_sort_3(&head_a);
-			}
-			else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
-			{
-				/*head_b = malloc(sizeof(t_stack));
-				if(head_b == NULL)
-					exit(1);*/
-				stack_sort_4_5(&head_a, &head_b);	
-			}
-			else if (argc > 6)
-			{
-				stack_sort_big(&head_a, &head_b);
-			}
+			else 
+				printf("Array Ordinato\n");
 		}
+			
 		
 		// check del numero di elementi dello stack e richiamo del relativo algoritmo
 		

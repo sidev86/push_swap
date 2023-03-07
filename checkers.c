@@ -46,3 +46,20 @@ int is_integer(char *str)
     }
     return (1);
 }
+
+int is_sorted(t_stack **stk_a)
+{
+    t_stack *curr;
+
+    curr = *stk_a;
+    while (curr)
+    {
+        if(curr->next && curr->val > curr->next->val)
+        {
+            return(0);
+        }
+        else
+            curr = curr->next;     
+    }
+    return(1);
+}
