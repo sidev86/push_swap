@@ -34,13 +34,14 @@ int is_integer(char *str)
     int i;
 
     i = 0;
+    if (str[i] == '+' || str[i] == '-')
+        i++;
     while (str[i])
     {
         if(is_digit(str[i]))
         {
             i++;
         }
-            
         else
             return (0);
     }

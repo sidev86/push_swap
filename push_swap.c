@@ -95,8 +95,7 @@ int	main(int argc, char **argv)
 					stack_sort_big(&head_a, &head_b);
 				}
 			}
-			else 
-				printf("Array Ordinato\n");
+			
 		}
 			
 		
