@@ -6,7 +6,6 @@ void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk
     t_stack *curr; 
     int *range; 
     int i;
-    int j;
     int l_size;
     int ch_num; 
     int l;
@@ -60,7 +59,6 @@ void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk
 
 void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums)
 {
-    t_stack *curr; 
     int chunks; 
      
 

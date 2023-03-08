@@ -2,16 +2,13 @@
 
 void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
 {
-    t_stack *curr; 
     int *nums; 
     int l_size;
-    int i;
- 
-    i = 0; 
+    
     //calcolo dimensione stack a (numero elementi)
     l_size = list_size(stk_a); 
     //printf ("lsize = %d\n", l_size);
-    curr = *stk_a;
+    
     //alloco memoria per array (x chunks)
     nums = malloc(sizeof(int) * l_size);
     populate_array(nums, stk_a); 

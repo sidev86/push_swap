@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <limits.h>
 
 int check_doubles(t_stack **stk_a)
 {
@@ -34,17 +35,15 @@ int is_integer(char *str)
     int i;
 
     i = 0;
-    if (str[i] == '+' || str[i] == '-')
-        i++;
     while (str[i])
     {
         if(is_digit(str[i]))
-        {
             i++;
-        }
         else
             return (0);
     }
+    //if (ft_atol(str) < INT_MIN || ft_atol(str) > INT_MAX)
+    //    return (0);
     return (1);
 }
 
@@ -64,3 +63,4 @@ int is_sorted(t_stack **stk_a)
     }
     return(1);
 }
+

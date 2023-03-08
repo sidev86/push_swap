@@ -1,4 +1,7 @@
-SRCFILES			=	push_swap.c instructions.c sort_small.c
+SRCFILES			= array_utils.c checkers.c chunks_utils.c \
+				chunks_utils_2.c converters.c deallocate_utils.c \
+				push_swap.c instructions.c sort_small.c sort_big.c \
+				stack_a_utils.c stack_a_utils_2.c stack_b_utils.c
 
 OBJECTS			= $(SRCFILES:.c=.o)
 

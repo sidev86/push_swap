@@ -6,7 +6,6 @@ int	main(int argc, char **argv)
 	t_stack *head_a;
 	t_stack *head_b;
 	t_stack *tail_a;
-	t_stack *tail_b;
 	t_stack *new_node;
 	t_stack *curr;
 
@@ -29,7 +28,7 @@ int	main(int argc, char **argv)
 				tail_a = head_a;
 				if(is_integer(argv[i]))
 				{
-					head_a->val = atoi(argv[i]); //TODO: creare funzione ft_atoi
+					head_a->val = ft_atoi(argv[i]); //TODO: creare funzione ft_atoi
 					head_a->next = NULL;
 					head_a->prev = NULL;	
 				}
@@ -47,7 +46,7 @@ int	main(int argc, char **argv)
 					exit(1);
 				if (is_integer(argv[i]))
 				{
-					new_node->val = atoi(argv[i]);
+					new_node->val = ft_atoi(argv[i]);
 					new_node->prev = tail_a;
 					new_node->next = NULL; 
 					new_node->prev->next = new_node;
@@ -95,7 +94,6 @@ int	main(int argc, char **argv)
 					stack_sort_big(&head_a, &head_b);
 				}
 			}
-			
 		}
 			
 		

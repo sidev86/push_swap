@@ -69,12 +69,12 @@ void push_to_stack(t_stack **stk_o, t_stack **stk_d)
 		(*stk_o)->prev = NULL; 
 	}
 	else
+	{
 		(*stk_o) = NULL; 
-	
-	
-		tmp->next = *stk_d; 
-		*stk_d = tmp; 
-		if(tmp->next)
-			tmp->next->prev = tmp; 
-		tmp->prev = NULL;
+	}
+	tmp->next = *stk_d; 
+	*stk_d = tmp; 
+	if(tmp->next)
+		tmp->next->prev = tmp; 
+	tmp->prev = NULL;
 }

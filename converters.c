@@ -9,14 +9,36 @@ int ft_atoi(char *str)
 
     i = 0;
     sign = 1;
-    while (*str)
+
+    if(str[0] == '+')
+        sign = 1;
+    else if(str[0] == '-')
+        sign = -1;
+    while (str[i])
     {
-        if(str[0] == '+')
-            sign = 1;
-        else if(str[0] == '-')
-            sign = -1;
-        
+       while (str[i] >= '0' && str[i] <= '9')
+            num = (num * 10) + (str[i++] - '0');
+    }
+    return (num * sign);
+}
+
+long int ft_atol(char *str)
+{
+    int i;
+    int sign;
+    long int num;
+
+    i = 0;
+    sign = 1;
+    num = 0;
+    if(str[0] == '+')
+        sign = 1;
+    else if(str[0] == '-')
+        sign = -1;
+    while (str[i])
+    {
         while (str[i] >= '0' && str[i] <= '9')
             num = (num * 10) + (str[i++] - '0');
     }
+    return (num * sign);
 }
