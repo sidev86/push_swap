@@ -1,103 +1,26 @@
 #include "push_swap.h"
+#include <unistd.h>
 #include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	t_stack *head_a;
-	t_stack *head_b;
-	t_stack *tail_a;
-	t_stack *new_node;
 	t_stack *curr;
 
-	int	i;
-
-	i = 1;
-	head_b = 0; 
-
-	
+	head_a = 0; 
 	if (argc >= 2)
-	{
-		//Popoliamo lo Stack A
-		while (i < argc)
-		{
-			if(i == 1) //primo elemento
-			{
-				head_a = malloc(sizeof(t_stack));
-				if (head_a == NULL)
-					exit(1);
-				tail_a = head_a;
-				if(is_integer(argv[i]))
-				{
-					head_a->val = ft_atoi(argv[i]); //TODO: creare funzione ft_atoi
-					head_a->next = NULL;
-					head_a->prev = NULL;	
-				}
-				else 
-				{
-					printf("Error\n");
-					exit(1);
-				}
-			}
-					
-			else //ci sono già nodi
-			{
-				new_node = malloc(sizeof(t_stack));
-				if (new_node == NULL)
-					exit(1);
-				if (is_integer(argv[i]))
-				{
-					new_node->val = ft_atoi(argv[i]);
-					new_node->prev = tail_a;
-					new_node->next = NULL; 
-					new_node->prev->next = new_node;
-					tail_a = new_node; 
-				}
-				else
-				{
-					printf("Error\n");
-					exit(1);
-				}		
-			}
-			i++;
-		}
+		populate_stka(&head_a, argc, argv);
+	curr = head_a; 
+	if (has_duplicates(&head_a))
+		write(2, "Error\n", 6);
+	else if(!is_sorted(&curr))
+			get_sort_solution(&curr, argc);
+}
 
-		curr = head_a; 
 
-		if (check_doubles(&head_a))
-			printf("Error\n");
-		else
-		{
-			if(!is_sorted(&curr))
-			{
-				//printf("stack valido. NON sono presenti valori doppi\n");
-				if (argc == 3)
-				{
-					if (curr->val > curr->next->val)
-					{
-						swap_single(&head_a);
-						printf("sa\n");
-					}	
-				}
-				else if (argc == 4)
-				{
-					stack_sort_3(&head_a);
-				}
-				else if (argc == 5 || argc == 6) //ordinamento 4/5 elementi
-				{
-					/*head_b = malloc(sizeof(t_stack));
-					if(head_b == NULL)
-						exit(1);*/
-					stack_sort_4_5(&head_a, &head_b);	
-				}
-				else if (argc > 6)
-				{
-					stack_sort_big(&head_a, &head_b);
-				}
-			}
-		}
-			
-		
-		// check del numero di elementi dello stack e richiamo del relativo algoritmo
+
+
+// check del numero di elementi dello stack e richiamo del relativo algoritmo
 		
 	
 		//Visualizza contenuto Stack A
@@ -138,5 +61,3 @@ int	main(int argc, char **argv)
 			printf("%d\n", curr->val);
 			curr = curr->prev; 
 		}*/
-	}
-}

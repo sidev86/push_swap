@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <limits.h>
 
-int check_doubles(t_stack **stk_a)
+int has_duplicates(t_stack **stk_a)
 {
     t_stack *curr;
     t_stack *curr2;
@@ -35,6 +35,11 @@ int is_integer(char *str)
     int i;
 
     i = 0;
+
+    if (str[0] == '-' || str[0] == '+')
+        i++;
+    if (!str[i])
+        return(0);
     while (str[i])
     {
         if(is_digit(str[i]))
@@ -42,8 +47,8 @@ int is_integer(char *str)
         else
             return (0);
     }
-    //if (ft_atol(str) < INT_MIN || ft_atol(str) > INT_MAX)
-    //    return (0);
+    if (ft_atol(str) < -2147483648  || ft_atol(str) > 2147483647)
+        return (0);
     return (1);
 }
 
@@ -55,9 +60,8 @@ int is_sorted(t_stack **stk_a)
     while (curr)
     {
         if(curr->next && curr->val > curr->next->val)
-        {
             return(0);
-        }
+
         else
             curr = curr->next;     
     }

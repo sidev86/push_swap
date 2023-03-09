@@ -3,6 +3,7 @@
 int get_chunks_num(int l_size)
 {
     int chunks;
+    chunks = 2;
     //stabilisco numero di chunk in base a dimensione stack
     if (l_size <= 10)
         chunks = 2;

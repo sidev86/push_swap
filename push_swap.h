@@ -1,6 +1,6 @@
-#include <stdio.h> 
 #include <stdlib.h> 
 #include <stddef.h>
+#include <unistd.h>
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -26,7 +26,7 @@ int find_val_stka_top(t_stack **stk_a, int *range);
 int find_val_stka_bottom(t_stack **stk_a, int *range);
 int find_val_pos_b(t_stack **stk_b, int max);
 int get_curr_val_index(t_stack **stk_a, int val);
-int check_doubles(t_stack **stk_a);
+int has_duplicates(t_stack **stk_a);
 int is_integer(char *str);
 int ft_atoi(char *str);
 
@@ -47,5 +47,7 @@ void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max);
 void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums);
 void sort_stack_b(t_stack **stk_a, t_stack **stk_b);
 void free_stack_memory(t_stack **stk_a);
+void populate_stka(t_stack **head_a, int argc, char **argv);
+void get_sort_solution(t_stack **curr, int argc);
 
 #endif
