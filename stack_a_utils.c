@@ -20,22 +20,30 @@ int find_next_min(t_stack **stk_a, int curr_min)
 	return(min); 
 }
 
-void check_best_rotation_a(t_stack **stk_a, int i, int l_size, int *range)
+void check_best_rotation_a_range(t_stack **stk_a, int i, int l_size, int *range)
 {
 	if (i < l_size / 2)
 	{
 		while((*stk_a)->val < range[0] || (*stk_a)->val > range[1])
-		{
-			rotate_single(stk_a);
-			write(1, "ra\n", 3);
-		}
+			rotate_single(stk_a, 'a');
 	}
 	else 
 	{
 		while((*stk_a)->val < range[0] || (*stk_a)->val > range[1])
-		{
-			rev_rotate_single(stk_a);
-			write(1, "rra\n", 4);
-		}
+			rev_rotate_single(stk_a, 'a');
+	}
+}
+
+void check_best_rotation_a_val(t_stack **stk_a, int i, int l_size, int min)
+{
+	if (i <= l_size / 2)
+	{
+		while((*stk_a)->val != min)
+			rotate_single(stk_a, 'a');
+	}
+	else
+	{
+		while((*stk_a)->val != min)
+			rev_rotate_single(stk_a, 'a');		
 	}
 }

@@ -55,10 +55,8 @@ void get_sort_solution(t_stack **curr, int argc)
     if (argc == 3)
     {
         if ((*curr)->val > (*curr)->next->val)
-        {
-            swap_single(curr);
-            write(1, "sa\n", 3);
-        }	
+            swap_single(curr, 'a');
+        	
     }
     else if (argc == 4)
         stack_sort_3(curr);

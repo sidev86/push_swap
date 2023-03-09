@@ -1,5 +1,5 @@
 #include "push_swap.h"
-void swap_single(t_stack **stk)
+void swap_single(t_stack **stk, char s)
 {
 	//sa or sb swap
 	t_stack *t; 
@@ -11,9 +11,13 @@ void swap_single(t_stack **stk)
 		t->val = t->next->val; 
 		t->next->val = tmp; 
 	}
+	if (s == 'a')
+		write(1, "sa\n", 3);
+	else if (s == 'b')
+		write(1, "sb\n", 3);
 }
 
-void rotate_single(t_stack **stk) //ra or rb rotate
+void rotate_single(t_stack **stk, char s) //ra or rb rotate
 {
     t_stack *t;  
  
@@ -28,9 +32,13 @@ void rotate_single(t_stack **stk) //ra or rb rotate
 		t->next->next = 0; 
 		(*stk)->prev = 0; 
 	}
+	if (s == 'a')
+		write(1, "ra\n", 3);
+	else if (s == 'b')
+		write(1, "rb\n", 3);
 }
 
-void rev_rotate_single(t_stack **stk)//rra or rrb rotate
+void rev_rotate_single(t_stack **stk, char s)//rra or rrb rotate
 {
 	t_stack *t;
 	t_stack *l; 
@@ -50,9 +58,13 @@ void rev_rotate_single(t_stack **stk)//rra or rrb rotate
 		(*stk)->prev = 0; 
 		(*stk)->next->prev = *stk; 
 	}
+	if (s == 'a')
+		write(1, "rra\n", 4);
+	else if (s == 'b')
+		write(1, "rrb\n", 4);
 }
 
-void push_to_stack(t_stack **stk_o, t_stack **stk_d)
+void push_to_stack(t_stack **stk_o, t_stack **stk_d, char s)
 {
 	t_stack *tmp; 
 	tmp = *stk_o;
@@ -70,4 +82,8 @@ void push_to_stack(t_stack **stk_o, t_stack **stk_d)
 	if(tmp->next)
 		tmp->next->prev = tmp; 
 	tmp->prev = NULL;
+	if (s == 'a')
+		write(1, "pa\n", 3);
+	else if (s == 'b')
+		write(1, "pb\n", 3);
 }

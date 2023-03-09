@@ -27,9 +27,8 @@ void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk
                 i = get_curr_val_index(stk_a, curr->val);
             if (curr && l_size > 0)
             {
-                check_best_rotation_a(stk_a, i, l_size, range);
-                push_to_stack(stk_a, stk_b);
-		        write(1, "pb\n", 3);
+                check_best_rotation_a_range(stk_a, i, l_size, range);
+                push_to_stack(stk_a, stk_b, 'b');
                 l_size--;   
             }
             else

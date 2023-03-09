@@ -17,8 +17,7 @@ void sort_stack_b(t_stack **stk_a, t_stack **stk_b)
         if (curr && l_size > 0)
         {
             check_best_rotation_b(stk_b, i, l_size, max);
-            push_to_stack(stk_b, stk_a);
-            write(1, "pa\n", 3);
+            push_to_stack(stk_b, stk_a, 'a');
             l_size--;    
         }
         else
@@ -51,18 +50,13 @@ void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max)
     if (i < l_size / 2)
     {
         while((*stk_b)->val != max)
-        {
-            rotate_single(stk_b);
-            write(1, "rb\n", 3);
-        }
+            rotate_single(stk_b, 'b');
+
     }
     else 
     {
         while((*stk_b)->val != max)
-        {
-            rev_rotate_single(stk_b);
-            write(1, "rrb\n", 4);
-        }
+            rev_rotate_single(stk_b, 'b');
     }
 }
 
