@@ -64,6 +64,5 @@ void get_sort_solution(t_stack **curr, int argc)
         stack_sort_4_5(curr, &head_b);	
     else if (argc > 6)
         stack_sort_big(curr, &head_b);
-    if (*curr)
-        free_stack_memory(curr);	
+    	
 }

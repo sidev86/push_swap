@@ -1,5 +1,42 @@
 #include "push_swap.h"
 
+
+static void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max)
+{
+    if (i < l_size / 2)
+    {
+        while((*stk_b)->val != max)
+            rotate_single(stk_b, 'b');
+
+    }
+    else 
+    {
+        while((*stk_b)->val != max)
+            rev_rotate_single(stk_b, 'b');
+    }
+}
+
+static t_stack *get_curr_max_pos(t_stack **stk_b, int max)
+{
+    t_stack *curr;
+    int i;
+
+    i = 0;
+    curr = *stk_b;
+    while(curr)
+    {
+        if (curr->val != max)
+        {
+            i++;
+            curr = curr->next;
+        }
+        else
+            break;
+    }
+    return curr;
+}
+
+
 void sort_stack_b(t_stack **stk_a, t_stack **stk_b)
 {
     t_stack *curr; 
@@ -25,40 +62,8 @@ void sort_stack_b(t_stack **stk_a, t_stack **stk_b)
     }
 }
 
-t_stack *get_curr_max_pos(t_stack **stk_b, int max)
-{
-    t_stack *curr;
-    int i;
 
-    i = 0;
-    curr = *stk_b;
-    while(curr)
-    {
-        if (curr->val != max)
-        {
-            i++;
-            curr = curr->next;
-        }
-        else
-            break;
-    }
-    return curr;
-}
 
-void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max)
-{
-    if (i < l_size / 2)
-    {
-        while((*stk_b)->val != max)
-            rotate_single(stk_b, 'b');
-
-    }
-    else 
-    {
-        while((*stk_b)->val != max)
-            rev_rotate_single(stk_b, 'b');
-    }
-}
 
 
 

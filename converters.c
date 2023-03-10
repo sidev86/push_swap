@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 int ft_atoi(char *str)
 {
     int i;

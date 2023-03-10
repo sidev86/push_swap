@@ -13,4 +13,3 @@ void stack_sort_big(t_stack **stk_a, t_stack **stk_b)
     sort_stack_b(stk_a, stk_b);
     free(nums);
 }
-    

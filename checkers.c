@@ -11,7 +11,6 @@ int has_duplicates(t_stack **stk_a)
 
     while (curr)
     {
-        //curr = *stk_a;
         curr2 = *stk_a;
         while (curr2)
         {
@@ -35,7 +34,6 @@ int is_integer(char *str)
     int i;
 
     i = 0;
-
     if (str[0] == '-' || str[0] == '+')
         i++;
     if (!str[i])

@@ -1,52 +1,49 @@
 #include "push_swap.h"
 
-
-void move_chunks_to_stackb(int chunks, int *nums, t_stack **stk_a, t_stack **stk_b)
+int find_next_min(t_stack **stk_a, int curr_min)
 {
-    t_stack *curr; 
-    int *range; 
-    int i;
-    int l_size;
-    int ch_num; 
-    int l;
-    
-    ch_num = 1; 
-    l_size = list_size(stk_a);
-    l = l_size; 
-    while (ch_num <= chunks)
-    {
-        range = get_chunk_range(nums, l, ch_num, chunks);
-        curr = *stk_a; 
-        while(curr != NULL && l_size > 0)
-        {
-            if (find_val_stka_top(stk_a, range) <= find_val_stka_bottom(stk_a, range))
-                curr = get_curr_stka_top(stk_a, range);
-            else 
-                curr = get_curr_stka_bottom(stk_a, range);
-            if (curr)
-                i = get_curr_val_index(stk_a, curr->val);
-            if (curr && l_size > 0)
-            {
-                check_best_rotation_a_range(stk_a, i, l_size, range);
-                push_to_stack(stk_a, stk_b, 'b');
-                l_size--;   
-            }
-            else
-                break; 
-        }
-        ch_num++; 
-    }
+	t_stack *curr; 
+	int min; 
+
+	curr = *stk_a; 
+	min = curr->val; 
+	if (min == curr_min)
+		min = curr->next->val; 
+	if (curr->val > curr_min)
+		min = curr->val; 
+	while(curr)
+	{
+		if (curr->val > curr_min && curr->val < min)
+			min = curr->val; 
+		curr = curr->next; 
+	}
+	return(min); 
 }
 
-void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums)
+void check_best_rotation_a_range(t_stack **stk_a, int i, int l_size, int *range)
 {
-    int chunks; 
-     
-
-    chunks = get_chunks_num(list_size(stk_a));
-
-    move_chunks_to_stackb(chunks, nums, stk_a, stk_b);
-   
+	if (i < l_size / 2)
+	{
+		while((*stk_a)->val < range[0] || (*stk_a)->val > range[1])
+			rotate_single(stk_a, 'a');
+	}
+	else 
+	{
+		while((*stk_a)->val < range[0] || (*stk_a)->val > range[1])
+			rev_rotate_single(stk_a, 'a');
+	}
 }
 
-
+void check_best_rotation_a_val(t_stack **stk_a, int i, int l_size, int min)
+{
+	if (i <= l_size / 2)
+	{
+		while((*stk_a)->val != min)
+			rotate_single(stk_a, 'a');
+	}
+	else
+	{
+		while((*stk_a)->val != min)
+			rev_rotate_single(stk_a, 'a');		
+	}
+}

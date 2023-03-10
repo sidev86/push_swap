@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 void free_stack_memory(t_stack **stk_a)
 {
     t_stack *tmp;

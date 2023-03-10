@@ -1,6 +1,5 @@
 #include "push_swap.h"
 
-
 int get_curr_val_index(t_stack **stk_a, int val)
 {
     t_stack *curr; 

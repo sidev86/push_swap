@@ -14,7 +14,10 @@ int	main(int argc, char **argv)
 	if (has_duplicates(&head_a))
 		write(2, "Error\n", 6);
 	else if(!is_sorted(&curr))
-			get_sort_solution(&curr, argc);
+		get_sort_solution(&curr, argc);
+	if (curr)
+        free_stack_memory(&curr);
+	return(0);
 }
 
 

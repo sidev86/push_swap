@@ -14,7 +14,6 @@ typedef struct	s_stack
 
 t_stack *get_curr_stka_top(t_stack **stk_a, int *range);
 t_stack *get_curr_stka_bottom(t_stack **stk_a, int *range);
-t_stack *get_curr_max_pos(t_stack **stk_a, int max);
 
 int find_min(t_stack **stk);
 int find_next_min(t_stack **stk_a, int curr_min);
@@ -44,12 +43,10 @@ void stack_sort_4_5(t_stack **stk_a, t_stack **stk_b);
 void stack_sort_big(t_stack **stk_a, t_stack **stk_b);
 void check_best_rotation_a_range(t_stack **stk_a, int i, int l_size, int *range);
 void check_best_rotation_a_val(t_stack **stk_a, int i, int l_size, int min);
-void check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max);
 void sort_stack_a(t_stack **stk_a, t_stack **stk_b, int *nums);
 void sort_stack_b(t_stack **stk_a, t_stack **stk_b);
 void free_stack_memory(t_stack **stk_a);
 void populate_stka(t_stack **head_a, int argc, char **argv);
 void get_sort_solution(t_stack **curr, int argc);
-void stack_3_cases(t_stack **curr, int min, int max);
 
 #endif
