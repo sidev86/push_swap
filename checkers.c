@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <limits.h>
 
 int	has_duplicates(t_stack **stk_a)
 {

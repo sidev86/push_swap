@@ -21,7 +21,7 @@ int	ft_atoi(char *str)
 	return (num * sign);
 }
 
-long int	ft_atol(char *str)
+long	ft_atol(char *str)
 {
 	int			i;
 	int			sign;
