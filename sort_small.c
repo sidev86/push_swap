@@ -24,12 +24,10 @@ void	stack_sort_3(t_stack **stk)
 {
 	int		max;
 	int		min;
-	t_stack	*curr;
 
-	curr = *stk;
 	min = find_min(stk);
 	max = find_max(stk);
-	stack_3_cases(&curr, min, max);
+	stack_3_cases(stk, min, max);
 }
 
 void	stack_sort_4_5(t_stack **stk_a, t_stack **stk_b)

@@ -8,21 +8,23 @@ OBJECTS			= $(SRCFILES:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror -I.
+CFLAGS			= -Wall -Wextra -Werror
 
-NAME			= push_swap
 
-all:			$(NAME)
+all: push_swap
 
-$(NAME):		$(OBJECTS)
-				gcc -o $@ $(OBJECTS)
+push_swap: $(OBJECTS)
+	gcc -o $@ $(OBJECTS)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $?
 
 clean:
-				$(RM) $(OBJECTS) $(BOBJECTS)
+	$(RM) $(OBJECTS)
 
-fclean:			clean
-				$(RM) $(NAME)
+fclean: clean
+	$(RM) push_swap
 
-re:				fclean $(NAME)
+re: fclean all
 
-.PHONY:			all clean fclean re
+.PHONY: all clean fclean re
