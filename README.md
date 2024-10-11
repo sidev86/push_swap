@@ -22,7 +22,8 @@ Here is a list of operations available to manipulate the stacks:
 
 <h2>Usage</h2>
 
-The program takes a list of integers as input and outputs a sequence of operations required to sort stack a. Example usage:
+The program takes a list of integers as input and outputs a sequence of operations required to sort stack a. 
+Example usage:
 
 ```bash
 $ ./push_swap 2 1 3 6 5 8
