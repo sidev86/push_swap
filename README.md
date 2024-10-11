@@ -23,7 +23,7 @@ Here is a list of operations available to manipulate the stacks:
 <h2>Usage</h2>
 
 The program takes a list of integers as input and outputs a sequence of operations required to sort stack a. <br>
-Example usage:
+Here you have an example:
 
 ```bash
 $ ./push_swap 2 1 3 6 5 8
@@ -35,4 +35,17 @@ pa
 ```
 
 
-<h2>Usage</h2>
+<h2>Project Rules</h2>
+
+<ul>
+  <li>The program must minimize the number of operations needed to sort the stack.</li>
+  <li>Every instructions is printed separated on a newline.</li>
+  <li>There's a limit in number of operations allowed based on the number of elements that are in the stack</li>
+</ul>
+
+
+
+
+
+
+
