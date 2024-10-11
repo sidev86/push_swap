@@ -61,7 +61,7 @@ For the checker type <strong><code>make bonus</code></strong> to generate the ex
 
 <h2>The Visualizer</h2>
 
-The visualizer is a useful program to visually check if the sorting algorithm is correct and counts the number of operations needed to sort the stack
+The visualizer is a useful program that shows the sorting process and counts the number of operations needed to sort the stack
 <br><br>
 
 <a href="https://github.com/o-reo/push_swap_visualizer">push_swap visualizer</a>
