@@ -22,7 +22,7 @@ Here is a list of operations available to manipulate the stacks:
 
 <h2>Usage</h2>
 
-The program takes a list of integers as input and outputs a sequence of operations required to sort stack a. 
+The program takes a list of integers as input and outputs a sequence of operations required to sort stack a. <br>
 Example usage:
 
 ```bash
