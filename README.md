@@ -61,7 +61,7 @@ For the checker type <strong><code>make bonus</code></strong> to generate the ex
 
 <h2>The Visualizer</h2>
 
-![push swap visualizer]https://github.com/sidev86/push_swap/blob/master/visualizer.gif
+![push swap visualizer](https://raw.githubusercontent.com/sidev86/push_swap/blob/master/visualizer.gif)
 
 
 The visualizer is a useful program that shows the sorting process and counts the number of operations needed to sort the stack
