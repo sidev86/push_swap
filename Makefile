@@ -2,18 +2,18 @@ SRCFILES			= array_utils.c stack_checkers.c chunks_utils.c \
 				chunks_utils_2.c converters.c deallocate_utils.c \
 				push_swap.c instructions.c sort_small.c sort_big.c \
 				stack_a_utils.c stack_a_utils_2.c stack_b_utils.c \
-				stack_utils.c populate_stack.c 
+				stack_utils.c populate_stack.c
 BFILES				= checker.c instructions.c stack_checkers.c populate_stack.c \
-				deallocate_utils.c get_next_line.c get_next_line_utils.c converters.c
+				deallocate_utils.c get_next_line.c get_next_line_utils.c converters.c \
+				other_utils.c
 				
 
 OBJECTS			= $(SRCFILES:.c=.o)
-BOBJECTS		= $(BFILES:.c=.o)
+BOBJECTS			= $(BFILES:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
-
+CFLAGS			= -Wall -Wextra -Werror -g 
 
 all: push_swap
 
@@ -26,7 +26,7 @@ checker: $(BOBJECTS)
 	gcc -o $@ $(BOBJECTS)
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	$(CC) -c $(CFLAGS) $<  
 
 clean:
 	$(RM) $(OBJECTS) $(BOBJECTS)
@@ -37,3 +37,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus clean fclean re
+

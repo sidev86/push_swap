@@ -70,7 +70,7 @@ char	*get_next_line(char **str)
 	if (!buf)
 		return (NULL);
 	ft_read_buf(str, buf);
-	if (str && ft_strlen(*str) > 0)
+	if (*str)
 		return (ft_extract_line(str));
 	str = 0;
 	return (NULL);

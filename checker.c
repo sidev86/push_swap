@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+#include <string.h>
 
 static int	get_size_list(t_stack *stk)
 {
@@ -29,25 +31,27 @@ static int	get_size_list(t_stack *stk)
 
 static int	execute_instruction(char *cmd, t_stack **stk_a, t_stack **stk_b)
 {
-	if (!ft_strncmp(cmd, "ra", 2))
+	if (!ft_strcmp(cmd, "ra"))
 		rotate_single(stk_a, 'x');
-	else if (!ft_strncmp(cmd, "rb", 2))
+	else if (!ft_strcmp(cmd, "rb") && get_size_list(*stk_b) > 0)
 		rotate_single(stk_b, 'x');
-	else if (!ft_strncmp(cmd, "rra", 3))
+	else if (!ft_strcmp(cmd, "rra"))
 		rev_rotate_single(stk_a, 'x');
-	else if (!ft_strncmp(cmd, "rrb", 3))
+	else if (!ft_strcmp(cmd, "rrb") && get_size_list(*stk_b) > 0)
 		rev_rotate_single(stk_b, 'x');
-	else if (!ft_strncmp(cmd, "sa", 2))
+	else if (!ft_strcmp(cmd, "sa"))
 		swap_single(stk_a, 'x');
-	else if (!ft_strncmp(cmd, "sb", 2))
+	else if (!ft_strcmp(cmd, "sb") && get_size_list(*stk_b) > 0)
 		swap_single(stk_b, 'x');
-	else if (!ft_strncmp(cmd, "pa", 2))
+	else if (!ft_strcmp(cmd, "pa"))
 		push_to_stack(stk_b, stk_a, 'x');
-	else if (!ft_strncmp(cmd, "pb", 2))
+	else if (!ft_strcmp(cmd, "pb"))
 		push_to_stack(stk_a, stk_b, 'x');
 	else
 	{
-		write(2, "Error\n", 6);
+		if (ft_strcmp(cmd, "sb") && ft_strcmp(cmd, "rb") \
+				&& ft_strcmp(cmd, "rrb"))
+			write(2, "Error\n", 6);
 		return (0);
 	}
 	return (1);
@@ -57,10 +61,14 @@ static int	read_instruction(char *cmd, t_stack **stk_a, t_stack **stk_b)
 {
 	int	len;
 
+	if (!cmd)
+		return (1);
 	len = ft_strlen(cmd);
+	if (!ft_strncmp(cmd, "\n", 1))
+		return (1);
 	if (len < 3 || len > 4)
 	{
-		write(2, "Error\n", 6);
+		write(2, "Errore\n", 7);
 		return (0);
 	}
 	cmd[len - 1] = 0;

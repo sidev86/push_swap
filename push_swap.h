@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 typedef struct s_stack
-{	
+{
 	int				val;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -64,6 +64,7 @@ long	ft_atol(char *str);
 
 //bonus
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strcmp(const char *s1, const char *s2);
 char	*get_next_line(char **str);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);

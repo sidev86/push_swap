@@ -29,7 +29,7 @@ static void	check_best_rotation_b(t_stack **stk_b, int i, int l_size, int max)
 static t_stack	*get_curr_max_pos(t_stack **stk_b, int max)
 {
 	t_stack		*curr;
-	
+
 	curr = *stk_b;
 	while (curr)
 	{

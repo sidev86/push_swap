@@ -50,7 +50,7 @@ static void	next_node(t_stack **tail_a, char *arg)
 	{
 		write(2, "Error\n", 6);
 		exit(1);
-	}		
+	}
 }
 
 void	populate_stka(t_stack **head_a, int argc, char **argv)
