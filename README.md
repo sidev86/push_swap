@@ -35,13 +35,13 @@ The program takes a list of integers as input and outputs a sequence of operatio
 Here you have an example:
 
 ```bash
-$ ./push_swap 2 1 3 6 5 8
+$ ./push_swap 2 1 3 6 5
+ra
+pb
+rra
+pb
 sa
-pb
-pb
-pb
-sa
-pa
+ra
 pa
 pa
 ```
@@ -58,10 +58,11 @@ Example usage:
 
 ```bash
 $ ./checker 3 2 1 0
-ra
+rra
+pb
 sa
-pb
-pb
+rra
+pa
 # (Press Ctrl + D to signal EOF)
 OK
 ```
