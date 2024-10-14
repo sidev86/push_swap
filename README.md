@@ -52,8 +52,8 @@ This optional part of the project include a checker program. The checker verifie
 <br>
 
 <h3>How it works</h3>
-The checker program verifies if the push_swap instructions correctly sort stack a. It accepts a list of integers as input, representing stack a (e.g., ./checker 3 2 1 0). After inputting the arguments, it waits for instructions via standard input, one per line, which you can end by pressing Ctrl + D (Linux/macOS) or Ctrl + Z (Windows). The program then executes the instructions on stack a and stack b. Finally, it outputs "OK" if stack a is sorted in ascending order and stack b is empty; otherwise, it prints "KO" or "Error" for invalid instructions.
-<br>
+The checker program verifies if the push_swap instructions correctly sort stack a. It accepts a list of integers as input, representing stack a (e.g., ./checker 3 2 1 0). After inputting the arguments, it waits for instructions via standard input, one per line, which you can end by pressing Ctrl + D (Linux/macOS) or Ctrl + Z (Windows). The program then executes the instructions on stack a and stack b.<br>Finally, it outputs "OK" if stack a is sorted in ascending order and stack b is empty; otherwise, it prints "KO" or "Error" for invalid instructions.
+<br><br>
 Example usage:
 
 ```bash
